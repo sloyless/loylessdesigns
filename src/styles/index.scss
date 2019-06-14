@@ -1,5 +1,26 @@
 @import 'includes/variables';
 @import 'carbon-components/scss/globals/scss/styles.scss';
+$carbon--theme: $carbon--theme--g90;
+
+a {
+  color: $text-01;
+  transition: color 0.2s ease-out;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $brand-01;
+
+    > svg {
+      fill: $brand-01;
+    }
+  }
+
+  > svg {
+    fill: $text-01;
+    transition: fill 0.2s ease-out;
+  }
+}
 
 /// The React <Content /> component uses the `main` element which IE11 doesn't recognize
 /// @link https://github.com/carbon-design-system/carbon/issues/2789
@@ -20,4 +41,8 @@ main {
 /// @link https://github.com/carbon-design-system/carbon/issues/3010
 .bx--content {
   padding: 0;
+}
+
+.full-view {
+  height: 100vh;
 }
