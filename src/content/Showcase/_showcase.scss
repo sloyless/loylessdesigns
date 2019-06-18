@@ -1,0 +1,9 @@
+@import 'includes/variables';
+
+.page-showcase {
+  background-color: white;
+
+  .masthead .masthead-content h2 {
+    color: $brand-02;
+  }
+}

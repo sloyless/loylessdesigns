@@ -3,6 +3,7 @@ import './styles/styles.scss';
 import { Content } from 'carbon-components-react/lib/components/UIShell';
 import Home from './content/Home';
 import About from './content/About';
+import Showcase from './content/Showcase';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Content>
           <Home />
           <About />
+          <Showcase />
         </Content>
       </>
     );

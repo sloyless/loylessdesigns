@@ -3,7 +3,7 @@ import MainMenu from '../../components/MainMenu';
 
 const Home = () => {
   return (
-    <section className="bx--grid bx--grid--full-width home-page full-view">
+    <section className="bx--grid bx--grid--full-width page-home full-view">
       <MainMenu></MainMenu>
       <div className="bx--row">
         <div className="bx--col">
