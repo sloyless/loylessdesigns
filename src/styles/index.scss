@@ -47,16 +47,7 @@ section[class*=' page-'] {
 .masthead {
   width: 100%;
   display: block;
-  border-left: 1rem solid black;
   margin-bottom: 2rem;
-
-  &:before {
-    content: '';
-    display: block;
-    width: 20%;
-    background-color: black;
-    height: 1rem;
-  }
 
   &.masthead-reverse {
     border-color: white;
@@ -67,7 +58,7 @@ section[class*=' page-'] {
   }
 
   .masthead-content {
-    padding: 1rem 2rem 1.75rem;
+    padding: 2rem 3rem 2.75rem;
     background-color: white;
 
     h1 {
