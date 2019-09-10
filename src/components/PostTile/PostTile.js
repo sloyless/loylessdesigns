@@ -23,59 +23,61 @@ class PostTile extends Component {
     console.log(post);
     if (post) {
       let postTitle = this.decodeHtml(post.title.rendered);
-      let featuredImage =
-        post.featured_media !== 0 ? post._embedded['wp:featuredmedia'][0] : '';
+      let postImages = {
+        featured:
+          post.featured_media !== 0
+            ? post._embedded['wp:featuredmedia'][0].media_details.sizes.full
+                .source_url
+            : '',
+        thumb:
+          post.acf.showcase_thumbnail !== 0
+            ? post.acf.showcase_thumbnail.sizes['post-thumbnail']
+            : '',
+      };
       let catArray = post._embedded['wp:term'][0];
       let tagArray = post._embedded['wp:term'][1];
       return (
-        <div className="post-tile-wrapper bx--col">
+        <div className="post-tile bx--col-lg-4 bx--col-md-3 bx--col-sm-2">
           <div className="post-thumb">
-            <img
-              src={
-                post.acf.showcase_thumbnail &&
-                post.acf.showcase_thumbnail.sizes['post-thumbnail']
-              }
-              alt=""
-            />
+            <img src={postImages.thumb} alt="" />
           </div>
-          <ModalWrapper
-            id="transactional-passive-modal"
-            className="post-tile"
-            passiveModal
-            buttonTriggerText={postTitle}
-            modalLabel="Showcase"
-            modalHeading={postTitle}
-            shouldCloseAfterSubmit>
-            <div className="post-category">
-              <ul>
-                {catArray.map(category => (
-                  <Tag
-                    type={category.slug === 'development' ? 'red' : 'blue'}
-                    disabled={false}
-                    role="listitem"
-                    key={category.id}>
-                    {category.name}
-                  </Tag>
-                ))}
-              </ul>
-            </div>
-            <div
-              className="post-content"
-              dangerouslySetInnerHTML={this.createMarkup(
-                post.content.rendered
-              )}></div>
-            {featuredImage && (
-              <div className="post-image">
-                <img
-                  src={
-                    featuredImage.media_details.sizes['post-thumbnail']
-                      .source_url
-                  }
-                  alt={featuredImage.alt_text}
-                />
+          <div className="post-button">
+            <ModalWrapper
+              id="transactional-passive-modal"
+              className="post-modal"
+              passiveModal
+              buttonTriggerText={postTitle}
+              modalLabel="Showcase"
+              modalHeading={postTitle}
+              shouldCloseAfterSubmit>
+              <div
+                className="post-content"
+                dangerouslySetInnerHTML={this.createMarkup(
+                  post.content.rendered
+                )}></div>
+              <div className="post-tags">
+                <ul>
+                  {tagArray.map(category => (
+                    <Tag
+                      type={category.slug === 'development' ? 'red' : 'blue'}
+                      disabled={false}
+                      role="listitem"
+                      key={category.id}>
+                      {category.name}
+                    </Tag>
+                  ))}
+                </ul>
               </div>
-            )}
-          </ModalWrapper>
+              {postImages.featured !== '' && (
+                <div className="post-image">
+                  <img
+                    src={postImages.featured}
+                    alt={`Examples of ${postTitle}`}
+                  />
+                </div>
+              )}
+            </ModalWrapper>
+          </div>
         </div>
       );
     }

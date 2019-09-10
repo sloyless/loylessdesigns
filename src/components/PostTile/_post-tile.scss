@@ -1,6 +1,9 @@
 @import 'includes/variables';
 
-.post-tile-wrapper {
+.post-tile {
+  position: relative;
+  margin-bottom: 2rem;
+
   .bx--modal-container {
     max-width: 100vw;
     width: 80%;
@@ -15,6 +18,21 @@
     padding: 0;
     margin-bottom: 0;
   }
+
+  .post-button {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    padding-right: 2rem;
+
+    > div > button {
+      width: 100%;
+      max-width: none;
+      background-color: rgba($ui-01, 0.8);
+      font-weight: bold;
+    }
+  }
 }
 
 .post-thumb {
@@ -23,19 +41,21 @@
   }
 }
 
-.post-tile {
+.post-modal {
   color: $ui-01;
 }
 
 .post-image {
   display: flex;
+  margin-top: 25px;
   img {
     max-width: 100%;
   }
 }
 
 .post-content,
-.post-category {
+.post-category,
+.post-tags {
   padding-left: 1rem;
   padding-right: 1rem;
 }
